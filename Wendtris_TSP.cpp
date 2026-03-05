@@ -156,9 +156,11 @@ int main() {
 
     int cum_prize = delivery_set.display_accepted_requests();
 
-    auto [tour, cost] = delivery_set.calculate_tsp_tour();
-    std::cout << "\nTotal TSP Cost: " << cost << "\n";
-    std::cout << "Final Score: " << cum_prize - cost << "\n";
+    auto result = delivery_set.calculate_tsp_tour();
+    std::vector<std::pair<int,int>> tour = result.first;
+    double cost = result.second;
+    std::cout << "Total Cost of Optimal TSP Tour: " << cost << "\n";
+    std::cout << "Your final Score: " << cumulated_prize - cost << "\n";
 
     delivery_set.plot_result(tour);
 
